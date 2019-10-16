@@ -4,7 +4,7 @@
 *.pyo
 __pycache__
 db.sqlite3
-myapp_settings.py
+myapp/settings.py
 myvenv
 /static
 .DS_Store

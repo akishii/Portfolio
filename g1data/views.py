@@ -13,7 +13,7 @@ def index(request):
         'data': [],
     }  
     
-    #POST送信時DBからデータを取得
+    #POST送信時DBからデータを検索し取得
     if (request.method == 'POST'):
         num1 = request.POST['year']
         num2 = request.POST['race_name']
