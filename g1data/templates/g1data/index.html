@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>G1race Archives</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'g1data/stylesheet.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron jumbotron-extend mt-3">
+      <h1>G1Race databace</h1>
+      <p class="lead">2010-2019 JRA G1race results</p>
+    </div>
+      <h3>レースを選んでください</h3>
+    <div class="form-group">
+      <form action="{% url 'index' %}" method="POST" placeholder="-select-">
+        <div class="form-inline col">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <input class="btn btn-primary" type="submit" value="SELECT">
+        </div>
+      </form>
+    </div>
+      <table class="table">
+        <tr class=>
+          <th>着 順</th>
+          <th>馬 番</th>
+          <th>馬　　名</th>
+          <th>性 齢</th>
+          <th>重 量</th>
+          <th>騎 手</th>
+          <th>調教師</th>
+          <th>時 計</th>
+          <th>上がり</th>
+          <th>人 気</th>
+        </tr>
+      {% for item in data %}
+        <tr>
+          <td>{{item.arr_no}}</td>
+          <td>{{item.horse_no}}</td>
+          <td>{{item.horsename}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.weight}}</td>
+          <td>{{item.jockey}}</td>
+          <td>{{item.trainer}}</td>
+          <td>{{item.time}}</td>
+          <td>{{item.lasttime}}</td>
+          <td>{{item.odds}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <span class="text-muted">please footer content here</span>
+    </div>
+  </footer>
+</body>
+</html>
